@@ -201,6 +201,7 @@ Meihan.Liu23@student.xjtlu.edu.cn
 # 🏄 Community
 
 [Tiktok]
+
 [Ins]
 
 
@@ -214,9 +215,13 @@ Meihan.Liu23@student.xjtlu.edu.cn
 Thanks to:
 
 Project member
+
 Test user
+
 Open-source model developer
+
 Contributor to open datasets
+
 All those who contribute to understanding and care
 
 
