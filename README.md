@@ -72,7 +72,7 @@ This video will demonstrate the specific operation process and functions of the 
 
 This is the basic structure of the website：
 
-![[Pasted image 20251117213913.png]]
+![[屏幕截图 2025-11-17 213858.png]]
 
 
 
