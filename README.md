@@ -61,7 +61,7 @@ In light of such realistic predicaments and technological opportunities, this pr
 # Website process:
 
 This video will demonstrate the specific operation process and functions of the website.
-![[deb9dab36ee36c7596b639c98b221ca9.mp4]]
+![https://v.douyin.com/ghrDxvbYyCc/]
 
 
 
@@ -200,10 +200,7 @@ Meihan.Liu23@student.xjtlu.edu.cn
 
 # 🏄 Community
 
-[Tiktok]
-
-[Ins]
-
+[Tiktok](https://v.douyin.com/ghrDxvbYyCc/)
 
 
 ---
@@ -212,7 +209,7 @@ Meihan.Liu23@student.xjtlu.edu.cn
 
 # 🤝 Acknowledgments
 
-Thanks to:
+**Thanks to:**
 
 Project member
 
