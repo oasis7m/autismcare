@@ -97,7 +97,7 @@ The four navigation buttons below quickly access the core module
 - Training records, behavioral data and growth curves 📊
 - Interaction methods suitable for children with autism (less reading pressure)
 - Rehabilitation games 
-- Professional anylisis
+- Professional analysis
 
 #### 📷 3.Recognition (recognition module)
 
