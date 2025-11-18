@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="filename" content="autism_rehabilitation_games.html">
+    <title>Rehabilitation Games for Autistic Children</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #4A90E2;
+            --secondary: #50E3C2;
+            --accent: #F5A623;
+            --light: #F8FAFC;
+            --dark: #2D3748;
+            --text: #2D3142;
+            --success: #7BC950;
+            --pink: #FF6B6B;
+            --purple: #A18AFF;
+            --border-radius: 20px;
+            --shadow: 0 10px 30px rgba(74, 111, 165, 0.15);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 62.5%;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Nunito', 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f9ff 0%, #f8fcfc 100%);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.03"><circle cx="30" cy="40" r="3" fill="%234A90E2"/><circle cx="80" cy="20" r="5" fill="%2350E3C2"/><circle cx="10" cy="80" r="4" fill="%23F5A623"/><circle cx="90" cy="90" r="6" fill="%23A18AFF"/></svg>');
+            background-size: 150px;
+            z-index: -1;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 144rem;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            backdrop-filter: blur(5px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-icon {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            width: 4.5rem;
+            height: 4.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.2rem;
+        }
+
+        .logo-icon svg {
+            width: 2.4rem;
+            height: 2.4rem;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 1.8rem;
+            font-weight: 600;
+            padding: 1rem 0;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-item > a:hover {
+            color: var(--primary);
+        }
+
+        .nav-item > a i {
+            margin-left: 0.8rem;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 24rem;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 10;
+            padding: 1.5rem 0;
+        }
+
+        .nav-item:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            display: flex;
+            align-items: center;
+            padding: 1.4rem 2rem;
+            font-size: 1.6rem;
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--light);
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+
+        .dropdown-content i {
+            width: 2.4rem;
+            text-align: center;
+            margin-right: 1.2rem;
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 12rem 0 8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            width: 50rem;
+            height: 50rem;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(74,90,226,0.1) 0%, rgba(80,227,194,0.05) 70%, transparent 100%);
+            z-index: -1;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: -10%;
+            width: 40rem;
+            height: 40rem;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path d="M50,100 C20,130 30,180 70,180 C120,180 150,120 120,70 C90,20 40,40 50,100 Z" fill="none" stroke="%23A18AFF" stroke-width="3" opacity="0.1"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: -1;
+        }
+
+        .tagline {
+            text-align: center;
+            font-size: 2.4rem;
+            margin-bottom: 4rem;
+            color: var(--dark);
+            font-weight: 500;
+            max-width: 80rem;
+            margin: 0 auto 5rem;
+            opacity: 0.9;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 8rem;
+            justify-content: center;
+            max-width: 120rem;
+            margin: 0 auto;
+        }
+
+        .hero-left {
+            flex: 1;
+        }
+
+        .hero-right {
+            flex: 1;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 45rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, rgba(74,90,226,0.1) 0%, rgba(80,227,194,0.1) 100%);
+            position: relative;
+        }
+
+        .decor-circle {
+            position: absolute;
+            width: 25rem;
+            height: 25rem;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(245,166,35,0.08) 0%, transparent 70%);
+            top: -5rem;
+            left: -5rem;
+        }
+
+        .decor-circle.second {
+            width: 18rem;
+            height: 18rem;
+            top: auto;
+            left: auto;
+            bottom: -3rem;
+            right: -5rem;
+            background: radial-gradient(circle, rgba(80,227,194,0.1) 0%, transparent 70%);
+        }
+
+        .decor-blob {
+            position: absolute;
+            width: 20rem;
+            height: 20rem;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path d="M48.6,-59.1C60.5,-41.7,65.9,-20.1,64.6,0.4C63.2,21,55.2,41.6,40.1,55.5C25,69.5,2.7,76.9,-17.1,72.2C-37,67.5,-54.1,50.9,-63.1,31.2C-72.1,11.6,-73.1,-11,-65,-30C-56.8,-49.1,-39.4,-64.7,-18.5,-69.8C2.4,-74.9,26.7,-69.6,48.6,-59.1Z" fill="%234A90E2" opacity="0.05"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            bottom: 10%;
+            left: 20%;
+        }
+
+        .hero-image {
+            width: 85%;
+            height: 85%;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            background: linear-gradient(45deg, #e3f2fd, #f3e5f5);
+            border: 1px solid rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .hero-image-content {
+            text-align: center;
+            padding: 2rem;
+            z-index: 2;
+        }
+
+        .hero-image-content h3 {
+            font-size: 2.4rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-image-content p {
+            font-size: 1.6rem;
+            max-width: 45rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+            padding: 1.8rem 5rem;
+            text-decoration: none;
+            border-radius: 5rem;
+            transition: var(--transition);
+            box-shadow: 0 10px 20px rgba(74, 111, 165, 0.3);
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            z-index: 1;
+        }
+
+        .cta-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .cta-btn:hover::before {
+            width: 100%;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(74, 111, 165, 0.4);
+        }
+
+        .hero h1 {
+            font-size: 5.2rem;
+            font-weight: 800;
+            line-height: 1.15;
+            color: var(--primary);
+            margin-bottom: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1::after {
+            content: "";
+            position: absolute;
+            bottom: -1rem;
+            left: 0;
+            width: 60%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+        }
+
+        .hero p {
+            font-size: 2rem;
+            color: var(--text);
+            margin-bottom: 2.5rem;
+            max-width: 60rem;
+            line-height: 1.7;
+        }
+
+        /* Features Section */
+        .features {
+            background-color: white;
+            padding: 10rem 0;
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin: 0 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .features::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 120%;
+            height: 50%;
+            background: linear-gradient(to right, rgba(74,90,226,0.03), rgba(80,227,194,0.03));
+            transform: rotate(-2deg);
+            transform-origin: left bottom;
+            z-index: 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 6rem;
+            max-width: 80rem;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+        }
+
+        .section-subtitle {
+            font-size: 2rem;
+            color: var(--dark);
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+            gap: 4rem;
+            max-width: 128rem;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 4rem 3rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            border-top: 5px solid var(--primary);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(74, 111, 165, 0.2);
+            border-top: 5px solid var(--secondary);
+        }
+
+        .feature-icon {
+            width: 8rem;
+            height: 8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+            border-radius: 20px;
+            background: linear-gradient(45deg, var(--light), var(--secondary));
+            font-size: 3.2rem;
+            color: var(--primary);
+            box-shadow: 0 10px 20px rgba(74, 111, 165, 0.15);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            color: white;
+        }
+
+        .feature-card h3 {
+            font-size: 2.4rem;
+            color: var(--dark);
+            margin-bottom: 1.6rem;
+        }
+
+        .feature-card p {
+            font-size: 1.8rem;
+            line-height: 1.7;
+            color: var(--text);
+            flex-grow: 1;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 10rem 0;
+            position: relative;
+        }
+
+        .pricing-cards {
+            display: flex;
+            justify-content: center;
+            gap: 5rem;
+            max-width: 120rem;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 5rem 4rem;
+            box-shadow: var(--shadow);
+            width: 40rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .pricing-card.basic {
+            border-top: 6px solid var(--secondary);
+        }
+
+        .pricing-card.premium {
+            border-top: 6px solid var(--primary);
+            transform: translateY(-3rem);
+        }
+
+        .pricing-card.premium:hover {
+            transform: translateY(-3.5rem);
+        }
+
+        .pricing-header {
+            margin-bottom: 3rem;
+        }
+
+        .pricing-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-price {
+            font-size: 5.2rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .pricing-card.basic .pricing-price {
+            color: var(--secondary);
+        }
+
+        .pricing-card.premium .pricing-price {
+            color: var(--primary);
+        }
+
+        .pricing-period {
+            color: var(--dark);
+            opacity: 0.8;
+            font-size: 1.8rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            text-align: left;
+            margin: 3.5rem 0;
+            padding: 0;
+        }
+
+        .pricing-features li {
+            font-size: 1.8rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .pricing-features li i {
+            margin-right: 1.2rem;
+            font-size: 2.2rem;
+            width: 28px;
+            text-align: center;
+        }
+
+        .pricing-features .fa-check {
+            color: var(--success);
+        }
+
+        .pricing-features .fa-times {
+            color: rgba(0,0,0,0.2);
+        }
+
+        .pricing-btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 600;
+            padding: 1.6rem 4rem;
+            text-decoration: none;
+            border-radius: 5rem;
+            transition: var(--transition);
+            width: 100%;
+            margin-top: 1.5rem;
+            border: none;
+            box-shadow: 0 8px 20px rgba(74,90,226,0.3);
+        }
+
+        .pricing-card.premium .pricing-btn {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+        }
+
+        .pricing-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(74,90,226,0.4);
+            background: var(--primary);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -10px;
+            right: 40px;
+            background: var(--accent);
+            color: white;
+            font-size: 1.6rem;
+            font-weight: 700;
+            padding: 0.5rem 2.5rem;
+            border-radius: 20px;
+            transform: rotate(4deg);
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 10rem 0;
+            position: relative;
+            background: linear-gradient(to bottom, rgba(248,250,252,0.9), white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin: 0 2rem;
+        }
+
+        .faq::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 40rem;
+            height: 40rem;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><path d="M50,100 C20,130 30,180 70,180 C120,180 150,120 120,70 C90,20 40,40 50,100 Z" fill="none" stroke="%2350E3C2" stroke-width="3" opacity="0.05"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index: 0;
+        }
+
+        .faq-container {
+            max-width: 100rem;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .faq-grid {
+            display: flex;
+            gap: 5rem;
+            margin-top: 6rem;
+        }
+
+        .faq-image {
+            flex: 1;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            background: linear-gradient(45deg, rgba(245,166,35,0.1), rgba(74,90,226,0.1));
+            min-height: 45rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .faq-image::before {
+            content: "";
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(80,227,194,0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .faq-image-content {
+            padding: 4rem;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .faq-image-content h3 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .faq-image-content p {
+            font-size: 1.8rem;
+            max-width: 35rem;
+            margin: 0 auto;
+        }
+
+        .faq-accordion {
+            flex: 1;
+        }
+
+        .accordion-item {
+            border-radius: var(--border-radius);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            background: white;
+        }
+
+        .accordion-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .accordion-header {
+            padding: 3rem;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .accordion-header:hover {
+            background-color: var(--light);
+            color: var(--primary);
+        }
+
+        .accordion-icon {
+            transition: var(--transition);
+            font-size: 2.2rem;
+            color: var(--primary);
+        }
+
+        .accordion-content {
+            padding: 0 3rem 0 3rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .accordion-item.active .accordion-content {
+            padding: 0 3rem 3rem 3rem;
+            max-height: 20rem;
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content p {
+            font-size: 1.8rem;
+            line-height: 1.7;
+            color: var(--dark);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 7rem 0 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: "";
+            position: absolute;
+            top: -10%;
+            right: -5%;
+            width: 50rem;
+            height: 50rem;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .footer-content {
+            max-width: 120rem;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .footer-title {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        .copyright {
+            font-size: 1.6rem;
+            margin-top: 6rem;
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        .contact-info {
+            font-size: 1.8rem;
+            margin-top: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: opacity 0.3s;
+            display: flex;
+            align-items: center;
+            margin: 0 1.5rem;
+        }
+
+        .contact-info a:hover {
+            opacity: 0.8;
+            transform: translateY(-2px);
+        }
+
+        .contact-info i {
+            margin-right: 1.2rem;
+            font-size: 2.2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .social-icon {
+            width: 5rem;
+            height: 5rem;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            font-size: 2.2rem;
+            color: white;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px);
+            background: var(--primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 5rem;
+            }
+
+            .hero-left, .hero-right {
+                flex: none;
+                width: 100%;
+                max-width: 70rem;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .faq-grid {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 2rem;
+            }
+
+            .logo h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero h1 {
+                font-size: 4.2rem;
+            }
+
+            .hero p {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 3.4rem;
+            }
+
+            .pricing-cards {
+                gap: 3rem;
+            }
+
+            .pricing-card.premium {
+                transform: none;
+            }
+        }
+
+        @media (max-width: 576px) {
+            html {
+                font-size: 56.25%;
+            }
+
+            .nav-links {
+                gap: 1.8rem;
+            }
+
+            .nav-item > a {
+                font-size: 1.6rem;
+            }
+
+            .dropdown-content {
+                min-width: 20rem;
+            }
+
+            .hero {
+                padding: 8rem 0 5rem;
+            }
+
+            .hero h1 {
+                font-size: 3.6rem;
+            }
+
+            .faq-image {
+                min-height: 35rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                        </svg>
+                    </div>
+                    <span>AutismCare</span>
+                </h1>
+            </div>
+
+            <div class="nav-links">
+                <div class="nav-item">
+                    <a href="#">Home</a>
+                </div>
+
+                <div class="nav-item">
+                    <a href="#">Features <i class="fas fa energy fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="#features"><i class="fas fa-star"></i> Key Features</a>
+                        <a href="#pricing"><i class="fas fa-tags"></i> Pricing</a>
+                    </div>
+                </div>
+
+                <div class="nav-item">
+                    <a href="#">Resources <i class="fas fa-chevron-down"></i></a>
+                    <div class="dropdown-content">
+                        <a href="https://v.douyin.com/ghrDxvbYyCc/" target="_blank"><i class="fas fa-video"></i> Demo Videos</a>
+                        <a href="#" id="project-link"><i class="fab fa-github"></i> Project Repository</a>
+                        <a href="mailto:Meihan.Liu@student.xjtlu.edu.cn"><i class="fas fa-envelope"></i> Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Rehabilitation Games for Autistic Children</h1>
+            <p class="tagline">Providing Support and Care for Those with Autism</p>
+            <div class="hero-content">
+                <div class="hero-left">
+                    <p>A comprehensive rehabilitation platform designed specifically for autistic children. Through gamified interactions, emotion recognition, and AI-assisted communication, we provide a supportive, calming and effective environment for children with autism spectrum disorder.</p>
+                    <a href="https://space.coze.cn/s/Pcy4g4GmerM/" class="cta-btn">Get Started For Free</a>
+                </div>
+                <div class="hero-right">
+                    <div class="decor-circle"></div>
+                    <div class="decor-circle second"></div>
+                    <div class="decor-blob"></div>
+                    <div class="hero-image">
+                        <div class="hero-image-content">
+                            <h3>Interactive Therapy Journey</h3>
+                            <p>Gentle, engaging activities designed to help children express themselves and develop vital skills</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features" id="features">
+            <div class="section-header">
+                <h2 class="section-title">Core Features</h2>
+                <p class="section-subtitle">Our comprehensive solution integrates innovative technologies designed specifically for the needs of children with autism</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <h3>Image Recognition</h3>
+                    <p>Real-time behavior analysis to understand emotions and non-verbal expressions, enabling personalized intervention strategies.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-smile"></i>
+                    </div>
+                    <h3>Emotion-Friendly UI</h3>
+                    <p>Gentle color schemes, minimalist designs, and warm visual elements to reduce sensory overload and create a calming environment.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Communication Assistant</h3>
+                    <p>AI-guided interactive dialogue systems to help autistic children practice language and social skills in a low-pressure environment.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Rehabilitation Games</h3>
+                    <p>Psychologically designed gamified training to improve attention, coordination, and social interaction abilities.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Low-Pressure Experience</h3>
+                    <p>Carefully structured user journey with no time limits, gradual progression to ensure children adapt comfortably.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Professional Analytics</h3>
+                    <p>Data-driven personalized progress reports with actionable insights for parents and specialists to track development.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="pricing" id="pricing">
+            <div class="section-header">
+                <h2 class="section-title">Plans & Pricing</h2>
+                <p class="section-subtitle">Find the perfect solution for your child's unique rehabilitation needs</p>
+            </div>
+            <div class="pricing-cards">
+                <div class="pricing-card basic">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Basic Plan</h3>
+                        <div class="pricing-price">Free</div>
+                        <div class="pricing-period">Ideal for new families</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 2 rehabilitation games</li>
+                        <li><i class="fas fa-check"></i> Basic emotion recognition</li>
+                        <li><i class="fas fa-check"></i> Weekly usage reports</li>
+                        <li><i class="fas fa-check"></i> Community support</li>
+                        <li><i class="fas fa-times"></i> Premium AI communicator</li>
+                        <li><i class="fas fa-times"></i> Custom training plans</li>
+                        <li><i class="fas fa-times"></i> Advanced analytics</li>
+                    </ul>
+                    <a href="https://space.coze.cn/s/Pcy4g4GmerM/" class="pricing-btn">Start Now</a>
+                </div>
+
+                <div class="pricing-card premium">
+                    <div class="featured-badge">RECOMMENDED</div>
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Premium Plan</h3>
+                        <div class="pricing-price">$29.99<span class="pricing-period">/month</span></div>
+                        <div class="pricing-period">Complete solution</div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 15+ rehabilitation games</li>
+                        <li><i class="fas fa-check"></i> Advanced emotion recognition</li>
+                        <li><i class="fas fa-check"></i> Daily detailed reports</li>
+                        <li><i class="fas fa-check"></i> Expert consultation access</li>
+                        <li><i class="fas fa-check"></i> Premium AI communicator</li>
+                        <li><i class="fas fa-check"></i> Custom training plans</li>
+                        <li><i class="fas fa-check"></i> Professional analytics dashboard</li>
+                    </ul>
+                    <a href="https://space.coze.cn/s/Pcy4g4GmerM/" class="pricing-btn">Upgrade To Premium</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Find answers to common questions about our rehabilitation platform</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-grid">
+                    <div class="faq-image">
+                        <div class="faq-image-content">
+                            <h3>Have More Questions?</h3>
+                            <p>Our support team is ready to assist you with any additional inquiries you may have about our platform.</p>
+                        </div>
+                    </div>
+                    <div class="faq-accordion">
+                        <div class="accordion-item active">
+                            <div class="accordion-header">
+                                <span>Who can benefit from these rehabilitation games?</span>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <p>Our games are specifically designed for children on the autism spectrum between the ages of 3-12. However, older children with similar therapeutic needs may also benefit from our platform.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>What equipment do I need to use the platform?</span>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <p>You only need a device with a camera (smartphone, tablet, or computer) and internet access. Our platform is web-based and doesn't require any specialized hardware.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>How does the emotion recognition technology work?</span>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <p>Using computer vision algorithms, our system analyzes facial expressions and non-verbal cues to identify emotions in real-time. This information helps personalize the experience and provides valuable insights for caregivers.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Is parental involvement required during sessions?</span>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <p>While children can engage independently with many activities, we recommend caregiver participation, especially early on. Our platform provides real-time suggestions and progress tracking to facilitate meaningful engagement.</p>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <div class="accordion-header">
+                                <span>Can I track my child's progress over time?</span>
+                                <i class="fas fa-chevron-down accordion-icon"></i>
+                            </div>
+                            <div class="accordion-content">
+                                <p>Yes, our platform generates detailed progress reports showing improvements in attention span, emotional recognition, communication skills, and specific developmental milestones. These can be shared with therapists or educators.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3 class="footer-title">Connecting Through Technology, Supporting Through Care</h3>
+
+            <div class="contact-info">
+                <a href="mailto:Meihan.Liu@student.xjtlu.edu.cn">
+                    <i class="fas fa-envelope"></i>
+                    <span>Meihan.Liu@student.xjtlu.edu.cn</span>
+                </a>
+            </div>
+
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+
+            <p class="copyright">© 2023 AutismCare Rehabilitation Platform. All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation to project repository
+        document.getElementById('project-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.open('https://github.com/oasis7m/autismcare.git', '_blank');
+        });
+
+        // Accordion functionality for FAQ section
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const item = header.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+
+        // Sticky header effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.97)';
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+                header.style.backdropFilter = 'blur(5px)';
+            } else {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 4px 12px rgba(0,0,0,0.05)';
+            }
+        });
+
+        // Simple animation on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                document.querySelector('.hero').classList.add('show');
+            }, 100);
+        });
+    </script>
+</body>
+</html>
