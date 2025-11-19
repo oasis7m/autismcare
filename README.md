@@ -63,7 +63,8 @@ In light of such realistic predicaments and technological opportunities, this pr
 This video will demonstrate the specific operation process and functions of the website.
 ![https://v.douyin.com/ghrDxvbYyCc/]
 
-
+At the same time, we have also provided video links on the xjtlu internal website.
+[demo video in xjtlu](https://video.xjtlu.edu.cn/Mediasite/MyMediasite/drafts)
 
 ---
 
